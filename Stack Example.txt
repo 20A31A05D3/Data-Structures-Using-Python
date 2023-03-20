@@ -1,0 +1,40 @@
+Stack Example:
+
+class Stack:
+    def __init__(self):
+        self.arr=[]
+    def stack_push(self,value):
+        self.arr.append(value)
+    def stack_pop(self):
+        self.arr.pop()
+    def printStack(self):
+        print(self.arr)
+
+s=Stack()
+s.stack_push(10)
+s.stack_push(20)
+s.stack_push(30)
+print(s.arr)
+s.stack_pop()
+s.stack_pop()
+print(s.arr)
+
+
+
+#balancing paranthesis
+
+stack=[]
+s=input("enter the string:")
+for i in s:
+    if i=="(":
+        stack.append(i)
+    elif i==")" and len(stack)!=0:
+        stack.pop()
+    else:
+        print("invalid string")
+if len(stack)==0:
+    print("valid string")
+else:
+    print("invalid string")
+
+

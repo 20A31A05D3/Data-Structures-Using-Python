@@ -1,0 +1,104 @@
+
+#binarytrees program inorder,preorder and postorder
+
+class Node:
+    def __init__(self,value):
+        self.data=value
+        self.left=None
+        self.right=None
+class BSTree:
+    def add_element(self,root,value):
+        new_node=Node(value)
+        if new_node.data<root.data:
+            if root.left!=None:
+                self.add_element(root.left,value)
+            else:
+                root.left=new_node
+                return
+        if new_node.data>root.data:
+            if root.right!=None:
+                self.add_element(root.right,value)
+            else:
+                root.right=new_node
+                return
+    def inorder(self,root):
+        if root.left!=None:
+            self.inorder(root.left)
+        print(root.data)
+        if root.right!=None:
+            self.inorder(root.right)
+    print()
+
+    def preorder(self,root):
+        print(root.data)
+        if root.left!=None:
+            self.preorder(root.left)
+        if root.right!=None:
+            self.preorder(root.right)
+    print()
+
+    def postorder(self,root):
+        if root.left!=None:
+            self.postorder(root.left)
+        if root.right!=None:
+            self.postorder(root.right)
+        print(root.data)
+
+    def levelorder(self,root):
+        q=[]
+        q.append(root)
+        while len(q)!=0:
+            element=q.pop(0)
+            if element.left:
+                q.append(element.left)
+            if element.right:
+                q.append(element.right)
+            print(element.data)
+
+ele=BSTree()
+root=Node(10)
+ele.add_element(root,10)
+ele.add_element(root,12)
+ele.add_element(root,33)
+ele.add_element(root,44)
+ele.add_element(root,54)
+ele.add_element(root,34)
+ele.inorder(root)
+print("inorder completed")
+ele.postorder(root)
+print("postorder completed")
+ele.preorder(root)
+print("preorder completed")
+ele.levelorder(root)
+
+o/p:
+10
+12
+33
+34
+44
+54
+inorder completed
+34
+54
+44
+33
+12
+10
+postorder completed
+10
+12
+33
+44
+34
+54
+preorder completed
+10
+12
+33
+44
+34
+54
+
+
+
